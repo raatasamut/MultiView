@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="app_padding">8dp</dimen>
+
+    <dimen name="app_title_size">16sp</dimen>
+    <dimen name="app_description_size">14sp</dimen>
+</resources>
