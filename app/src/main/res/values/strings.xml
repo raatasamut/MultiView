@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MultiView</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

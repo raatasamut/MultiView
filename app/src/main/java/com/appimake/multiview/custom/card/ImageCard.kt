@@ -8,9 +8,10 @@ import com.appimake.multirecyclerview.BaseMultiViewHolder
 import com.appimake.multiview.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions.fitCenterTransform
-import com.viven.imagezoom.ImageZoomHelper
 
 class ImageCard(itemView: View) : BaseMultiViewHolder(itemView) {
+    override fun canSwipe(): Boolean = true
+
     override fun bindType(item: BaseMultiViewData) {
 
         var ivImage = itemView.findViewById<ImageView>(R.id.custom_cell_image_card_image)
@@ -19,10 +20,8 @@ class ImageCard(itemView: View) : BaseMultiViewHolder(itemView) {
         Glide.with(itemView.context)
                 .load((item.getDataModel() as ImageCardModel).url)
                 .apply(fitCenterTransform())
-                .into(ivImage);
+                .into(ivImage)
 
-        tvTitle.text = item.getName()
-
-        ImageZoomHelper.setViewZoomable(itemView.findViewById(R.id.custom_cell_image_card_image));
+        tvTitle.text = (item.getDataModel() as ImageCardModel).title
     }
 }

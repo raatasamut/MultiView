@@ -17,4 +17,4 @@ class ViewGalleryData(val dataModel: ViewGalleryDataModel) : BaseMultiViewData {
     override fun getDataModel(): Any = dataModel
 }
 
-data class ViewGalleryDataModel(val imageListURL : ArrayList<String>)
+data class ViewGalleryDataModel(val imageListURL: ArrayList<String>)

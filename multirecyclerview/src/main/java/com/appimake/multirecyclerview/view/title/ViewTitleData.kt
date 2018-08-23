@@ -6,9 +6,7 @@ import com.appimake.multirecyclerview.BaseMultiViewHolder
 import com.appimake.multirecyclerview.R
 
 class ViewTitleData(var title: String) : BaseMultiViewData {
-    override fun getDataModel(): Any {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun getDataModel(): Any = 0
 
     override fun getLayout(): Int = R.layout.cell_title
 
@@ -16,5 +14,5 @@ class ViewTitleData(var title: String) : BaseMultiViewData {
 
     override fun getName(): String = title
 
-    override fun getView(rootView : View): BaseMultiViewHolder = ViewTitle(rootView)
+    override fun getView(rootView: View): BaseMultiViewHolder = ViewTitle(rootView)
 }
