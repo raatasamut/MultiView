@@ -7,18 +7,16 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
 import android.util.Log
-import android.view.MotionEvent
+import com.appimake.cellpool.cell.card.ImageCardData
+import com.appimake.cellpool.cell.card.ImageCardModel
+import com.appimake.cellpool.cell.gallery.ViewGalleryData
+import com.appimake.cellpool.cell.gallery.ViewGalleryDataModel
+import com.appimake.cellpool.cell.map.MapView
+import com.appimake.cellpool.cell.map.MapViewData
+import com.appimake.cellpool.cell.map.MapViewModel
+import com.appimake.cellpool.cell.title.ViewTitleData
 import com.appimake.multirecyclerview.*
-import com.appimake.multirecyclerview.view.gallery.ViewGalleryData
-import com.appimake.multirecyclerview.view.gallery.ViewGalleryDataModel
-import com.appimake.multirecyclerview.view.title.ViewTitleData
-import com.appimake.multiview.custom.card.ImageCardData
-import com.appimake.multiview.custom.card.ImageCardModel
-import com.appimake.multiview.custom.map.MapView
-import com.appimake.multiview.custom.map.MapViewData
-import com.appimake.multiview.custom.map.MapViewModel
 import com.google.android.gms.maps.GoogleMap
-import com.viven.imagezoom.ImageZoomHelper
 
 
 class MainActivity : AppCompatActivity() {
@@ -27,13 +25,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
 
-    private lateinit var imageZoomHelper: ImageZoomHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        imageZoomHelper = ImageZoomHelper(this)
 
         val cellList = arrayListOf<BaseMultiViewData>()
         cellList.add(ViewTitleData("Gallery"))
@@ -87,9 +82,5 @@ class MainActivity : AppCompatActivity() {
         }
 
         // End. Set swipe left right
-    }
-
-    override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
-        return imageZoomHelper.onDispatchTouchEvent(ev) || super.dispatchTouchEvent(ev)
     }
 }

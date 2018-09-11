@@ -1,9 +1,9 @@
-package com.appimake.multirecyclerview.view.title
+package com.appimake.cellpool.cell.title
 
 import android.view.View
+import com.appimake.cellpool.R
 import com.appimake.multirecyclerview.BaseMultiViewData
 import com.appimake.multirecyclerview.BaseMultiViewHolder
-import com.appimake.multirecyclerview.R
 
 class ViewTitleData(var title: String) : BaseMultiViewData {
     override fun getDataModel(): Any = 0

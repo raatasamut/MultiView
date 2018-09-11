@@ -1,9 +1,9 @@
-package com.appimake.multiview.custom.map
+package com.appimake.cellpool.cell.map
 
 import android.view.View
+import com.appimake.cellpool.R
 import com.appimake.multirecyclerview.BaseMultiViewData
 import com.appimake.multirecyclerview.BaseMultiViewHolder
-import com.appimake.multiview.R
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.model.LatLng
@@ -20,7 +20,7 @@ class MapView(itemView: View) : BaseMultiViewHolder(itemView), OnMapReadyCallbac
         itemView.isClickable = false
 
         data = item.getDataModel() as MapViewModel
-        mapView = itemView.findViewById(R.id.custom_cell_map_map)
+        mapView = itemView.findViewById(R.id.cell_map_map)
         if (mapView != null) {
             // Initialise the MapView
             mapView.onCreate(null)

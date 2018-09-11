@@ -1,9 +1,9 @@
-package com.appimake.multirecyclerview.view.gallery
+package com.appimake.cellpool.cell.gallery
 
 import android.view.View
+import com.appimake.cellpool.R
 import com.appimake.multirecyclerview.BaseMultiViewData
 import com.appimake.multirecyclerview.BaseMultiViewHolder
-import com.appimake.multirecyclerview.R
 
 class ViewGalleryData(val dataModel: ViewGalleryDataModel) : BaseMultiViewData {
     override fun getName(): String = "Gallery"

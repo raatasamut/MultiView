@@ -1,9 +1,9 @@
-package com.appimake.multiview.custom.map
+package com.appimake.cellpool.cell.map
 
 import android.view.View
+import com.appimake.cellpool.R
 import com.appimake.multirecyclerview.BaseMultiViewData
 import com.appimake.multirecyclerview.BaseMultiViewHolder
-import com.appimake.multiview.R
 
 class MapViewData(var mapDataModel: MapViewModel) : BaseMultiViewData {
     override fun getDataModel(): Any = mapDataModel
@@ -12,7 +12,9 @@ class MapViewData(var mapDataModel: MapViewModel) : BaseMultiViewData {
 
     override fun getType(): Int = this.hashCode()
 
-    override fun getLayout(): Int = R.layout.custom_cell_maps
+    override fun getLayout(): Int = R.layout.cell_map
 
     override fun getView(rootView: View): BaseMultiViewHolder = MapView(rootView)
 }
+
+data class MapViewModel(var title: String, var lat: Double, var lng: Double, var zoomLevel: Float)

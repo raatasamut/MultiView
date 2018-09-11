@@ -43,8 +43,8 @@ class MultiSwipeController(val recyclerView: RecyclerView, val buttonsActions: M
         itemTouchhelper.attachToRecyclerView(recyclerView)
 
         recyclerView.addItemDecoration(object : RecyclerView.ItemDecoration() {
-            override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State?) {
-                onDraw(c)
+            override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+                drawCanvas(c)
             }
         })
     }
@@ -75,20 +75,20 @@ class MultiSwipeController(val recyclerView: RecyclerView, val buttonsActions: M
     }
 
     override fun onChildDraw(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
-        var dX = dX
-        swipeIndex = dX
+        var dx = dX
+        swipeIndex = dx
         if (actionState == ACTION_STATE_SWIPE) {
             if (buttonShowedState != ButtonsState.GONE) {
-                if (buttonShowedState == ButtonsState.LEFT_VISIBLE) dX = Math.max(dX, buttonWidth)
-                if (buttonShowedState == ButtonsState.RIGHT_VISIBLE) dX = Math.min(dX, -buttonWidth)
-                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                if (buttonShowedState == ButtonsState.LEFT_VISIBLE) dx = Math.max(dx, buttonWidth)
+                if (buttonShowedState == ButtonsState.RIGHT_VISIBLE) dx = Math.min(dx, -buttonWidth)
+                super.onChildDraw(c, recyclerView, viewHolder, dx, dY, actionState, isCurrentlyActive)
             } else {
-                setTouchListener(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                setTouchListener(c, recyclerView, viewHolder, dx, dY, actionState, isCurrentlyActive)
             }
         }
 
         if (buttonShowedState == ButtonsState.GONE) {
-            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+            super.onChildDraw(c, recyclerView, viewHolder, dx, dY, actionState, isCurrentlyActive)
         }
         currentItemViewHolder = viewHolder
     }
@@ -96,7 +96,7 @@ class MultiSwipeController(val recyclerView: RecyclerView, val buttonsActions: M
     @SuppressLint("ClickableViewAccessibility")
     private fun setTouchListener(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
         Log.d("TESTSWIPE", "1")
-        recyclerView.setOnTouchListener { v, event ->
+        recyclerView.setOnTouchListener { _, event ->
             Log.d("TESTSWIPE", "2")
             swipeBack = event.action == MotionEvent.ACTION_CANCEL || event.action == MotionEvent.ACTION_UP
             if (swipeBack) {
@@ -107,7 +107,7 @@ class MultiSwipeController(val recyclerView: RecyclerView, val buttonsActions: M
                     buttonShowedState = ButtonsState.LEFT_VISIBLE
 
                 if (buttonShowedState != ButtonsState.GONE) {
-                    setTouchDownListener(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                    setTouchDownListener(c, recyclerView, viewHolder, dY, actionState, isCurrentlyActive)
                     setItemsClickable(recyclerView, false)
                 }
             }
@@ -116,20 +116,20 @@ class MultiSwipeController(val recyclerView: RecyclerView, val buttonsActions: M
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    private fun setTouchDownListener(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
+    private fun setTouchDownListener(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
         Log.d("TESTSWIPE", "4")
-        recyclerView.setOnTouchListener { v, event ->
+        recyclerView.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_DOWN) {
-                setTouchUpListener(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                setTouchUpListener(c, recyclerView, viewHolder, dY, actionState, isCurrentlyActive)
             }
             false
         }
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    private fun setTouchUpListener(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
+    private fun setTouchUpListener(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
         Log.d("TESTSWIPE", "5")
-        recyclerView.setOnTouchListener { v, event ->
+        recyclerView.setOnTouchListener { _, event ->
             Log.d("TESTSWIPE", "IN")
             if (event.action == MotionEvent.ACTION_UP) {
                 super@MultiSwipeController.onChildDraw(c, recyclerView, viewHolder, 0f, dY, actionState, isCurrentlyActive)
@@ -203,7 +203,7 @@ class MultiSwipeController(val recyclerView: RecyclerView, val buttonsActions: M
         c.drawText(text, button.centerX() - textWidth / 2, button.centerY() + textSize / 2, p)
     }
 
-    fun onDraw(c: Canvas) {
+    fun drawCanvas(c: Canvas) {
         if (currentItemViewHolder != null) {
             drawButtons(c, currentItemViewHolder!!)
         }

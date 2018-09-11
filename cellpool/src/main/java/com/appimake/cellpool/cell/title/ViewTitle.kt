@@ -1,4 +1,4 @@
-package com.appimake.multirecyclerview.view.title
+package com.appimake.cellpool.cell.title
 
 import android.view.View
 import com.appimake.multirecyclerview.BaseMultiViewData
