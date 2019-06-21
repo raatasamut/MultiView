@@ -1,11 +1,11 @@
 package com.appimake.multirecyclerview
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 
-class MultiViewAdapter(val context: Context, val listItem: ArrayList<BaseMultiViewData>) : RecyclerView.Adapter<BaseMultiViewHolder>() {
+class MultiViewAdapter(val context: Context, val listItem: ArrayList<BaseMultiViewData>) : androidx.recyclerview.widget.RecyclerView.Adapter<BaseMultiViewHolder>() {
 
     init {
         val tmpList = ArrayList<BaseMultiViewData>()

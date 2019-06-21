@@ -1,6 +1,6 @@
 package com.appimake.multiview.conponent.cell_001
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import android.view.View
 import com.appimake.multirecyclerview.BaseMultiViewData
 import com.appimake.multirecyclerview.BaseMultiViewHolder

@@ -1,10 +1,10 @@
 package com.appimake.multiview
 
 import android.app.Activity
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.appimake.cellpool.cell.gallery.ViewGalleryData
 import com.appimake.cellpool.cell.gallery.ViewGalleryDataModel
 import com.appimake.cellpool.cell.title.ViewTitleData

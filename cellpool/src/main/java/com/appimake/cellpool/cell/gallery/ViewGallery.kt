@@ -1,8 +1,8 @@
 package com.appimake.cellpool.cell.gallery
 
 import android.content.Context
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,10 +17,10 @@ import kotlinx.android.synthetic.main.cell_gallery.view.*
 class ViewGallery(itemView: View) : BaseMultiViewHolder(itemView) {
     override fun bindType(item: BaseMultiViewData) {
 
-        lateinit var viewAdapter: RecyclerView.Adapter<*>
-        lateinit var viewManager: RecyclerView.LayoutManager
+        lateinit var viewAdapter: androidx.recyclerview.widget.RecyclerView.Adapter<*>
+        lateinit var viewManager: androidx.recyclerview.widget.RecyclerView.LayoutManager
 
-        viewManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
+        viewManager = LinearLayoutManager(itemView.context, androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL, false)
         viewAdapter = GalleryAdapter(itemView.context, (item.getDataModel() as ViewGalleryDataModel).imageListURL)
 
         itemView.cell_gallery_rv.apply {
@@ -30,7 +30,7 @@ class ViewGallery(itemView: View) : BaseMultiViewHolder(itemView) {
     }
 }
 
-private class GalleryAdapter(val context: Context, val imageListURL: ArrayList<String>) : RecyclerView.Adapter<GalleryAdapter.ViewHolder>() {
+private class GalleryAdapter(val context: Context, val imageListURL: ArrayList<String>) : androidx.recyclerview.widget.RecyclerView.Adapter<GalleryAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(context)
                 .load(imageListURL[position])
@@ -42,7 +42,7 @@ private class GalleryAdapter(val context: Context, val imageListURL: ArrayList<S
 
     override fun getItemCount(): Int = imageListURL.size
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
         var ivImage = itemView.findViewById<ImageView>(R.id.cell_gallery_view_image)
     }
 }

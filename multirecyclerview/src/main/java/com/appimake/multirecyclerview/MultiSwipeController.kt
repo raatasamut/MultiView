@@ -5,10 +5,10 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.helper.ItemTouchHelper
-import android.support.v7.widget.helper.ItemTouchHelper.ACTION_STATE_SWIPE
-import android.support.v7.widget.helper.ItemTouchHelper.Callback
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_SWIPE
+import androidx.recyclerview.widget.ItemTouchHelper.Callback
 import android.util.Log
 import android.view.MotionEvent
 
@@ -20,7 +20,7 @@ internal enum class ButtonsState {
 
 data class SwipeButton(val title: String, val color: Int, val size: Float)
 
-class MultiSwipeController(val recyclerView: RecyclerView, val buttonsActions: MultiSwipeControllerActions, val swipeFlag: Int) : Callback() {
+class MultiSwipeController(val recyclerView: androidx.recyclerview.widget.RecyclerView, val buttonsActions: MultiSwipeControllerActions, val swipeFlag: Int) : Callback() {
 
     private var swipeBack = false
 
@@ -28,7 +28,7 @@ class MultiSwipeController(val recyclerView: RecyclerView, val buttonsActions: M
 
     private var buttonInstance: RectF? = null
 
-    private var currentItemViewHolder: RecyclerView.ViewHolder? = null
+    private var currentItemViewHolder: androidx.recyclerview.widget.RecyclerView.ViewHolder? = null
 
     private var swipeIndex = 0f
 
@@ -42,24 +42,24 @@ class MultiSwipeController(val recyclerView: RecyclerView, val buttonsActions: M
         val itemTouchhelper = ItemTouchHelper(this)
         itemTouchhelper.attachToRecyclerView(recyclerView)
 
-        recyclerView.addItemDecoration(object : RecyclerView.ItemDecoration() {
-            override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+        recyclerView.addItemDecoration(object : androidx.recyclerview.widget.RecyclerView.ItemDecoration() {
+            override fun onDraw(c: Canvas, parent: androidx.recyclerview.widget.RecyclerView, state: androidx.recyclerview.widget.RecyclerView.State) {
                 drawCanvas(c)
             }
         })
     }
 
-    override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
+    override fun getMovementFlags(recyclerView: androidx.recyclerview.widget.RecyclerView, viewHolder: androidx.recyclerview.widget.RecyclerView.ViewHolder): Int {
         if ((viewHolder as BaseMultiViewHolder).canSwipe())
             return ItemTouchHelper.Callback.makeMovementFlags(0, swipeFlag)
         else return 0
     }
 
-    override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
+    override fun onMove(recyclerView: androidx.recyclerview.widget.RecyclerView, viewHolder: androidx.recyclerview.widget.RecyclerView.ViewHolder, target: androidx.recyclerview.widget.RecyclerView.ViewHolder): Boolean {
         return false
     }
 
-    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+    override fun onSwiped(viewHolder: androidx.recyclerview.widget.RecyclerView.ViewHolder, direction: Int) {
 
     }
 
@@ -74,7 +74,7 @@ class MultiSwipeController(val recyclerView: RecyclerView, val buttonsActions: M
         return super.convertToAbsoluteDirection(flags, layoutDirection)
     }
 
-    override fun onChildDraw(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
+    override fun onChildDraw(c: Canvas, recyclerView: androidx.recyclerview.widget.RecyclerView, viewHolder: androidx.recyclerview.widget.RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
         var dx = dX
         swipeIndex = dx
         if (actionState == ACTION_STATE_SWIPE) {
@@ -94,7 +94,7 @@ class MultiSwipeController(val recyclerView: RecyclerView, val buttonsActions: M
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    private fun setTouchListener(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
+    private fun setTouchListener(c: Canvas, recyclerView: androidx.recyclerview.widget.RecyclerView, viewHolder: androidx.recyclerview.widget.RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
         Log.d("TESTSWIPE", "1")
         recyclerView.setOnTouchListener { _, event ->
             Log.d("TESTSWIPE", "2")
@@ -116,7 +116,7 @@ class MultiSwipeController(val recyclerView: RecyclerView, val buttonsActions: M
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    private fun setTouchDownListener(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
+    private fun setTouchDownListener(c: Canvas, recyclerView: androidx.recyclerview.widget.RecyclerView, viewHolder: androidx.recyclerview.widget.RecyclerView.ViewHolder, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
         Log.d("TESTSWIPE", "4")
         recyclerView.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_DOWN) {
@@ -127,7 +127,7 @@ class MultiSwipeController(val recyclerView: RecyclerView, val buttonsActions: M
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    private fun setTouchUpListener(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
+    private fun setTouchUpListener(c: Canvas, recyclerView: androidx.recyclerview.widget.RecyclerView, viewHolder: androidx.recyclerview.widget.RecyclerView.ViewHolder, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
         Log.d("TESTSWIPE", "5")
         recyclerView.setOnTouchListener { _, event ->
             Log.d("TESTSWIPE", "IN")
@@ -152,13 +152,13 @@ class MultiSwipeController(val recyclerView: RecyclerView, val buttonsActions: M
         }
     }
 
-    private fun setItemsClickable(recyclerView: RecyclerView, isClickable: Boolean) {
+    private fun setItemsClickable(recyclerView: androidx.recyclerview.widget.RecyclerView, isClickable: Boolean) {
         for (i in 0 until recyclerView.childCount) {
             recyclerView.getChildAt(i).isClickable = isClickable
         }
     }
 
-    private fun drawButtons(c: Canvas, viewHolder: RecyclerView.ViewHolder) {
+    private fun drawButtons(c: Canvas, viewHolder: androidx.recyclerview.widget.RecyclerView.ViewHolder) {
         val buttonWidthWithoutPadding = buttonWidth
         val corners = 8f
 
