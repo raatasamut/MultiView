@@ -9,4 +9,4 @@ Install
     }
 
     // Inside using module
-    implementation 'com.github.raatasamut:MultiView:v1.0.0'
+    implementation 'com.github.raatasamut:MultiView:1.0.0'
