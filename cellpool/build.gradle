@@ -6,31 +6,6 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'kotlin-android-extensions'
 
-apply plugin: 'com.jfrog.bintray'
-
-apply plugin: 'com.github.dcendents.android-maven'
-
-ext {
-    bintrayRepo = "MultiView"
-    bintrayName = "com.appimake.cellpool"
-
-    libraryName = "cellpool"
-
-    publishedGroupId = 'com.appimake.cellpool'
-    artifact = 'cellpool'
-    libraryVersion = '1.0.0'
-
-    libraryDescription = 'Cellpool for Dynamic view for recycler view'
-    siteUrl = 'https://github.com/raatasamut/MultiView'
-    gitUrl = 'https://github.com/raatasamut/MultiView.git'
-    developerId = 'appimake'
-    developerName = 'appimake'
-    developerEmail = 'appimake@gmail.com'
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/license/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
-
 android {
     compileSdkVersion 28
 
@@ -68,9 +43,4 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation project(':multirecyclerview')
-}
-
-if (project.rootProject.file('local.properties').exists()) {
-    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
 }
