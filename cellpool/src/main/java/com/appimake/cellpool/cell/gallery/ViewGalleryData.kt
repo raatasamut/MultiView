@@ -6,6 +6,8 @@ import com.appimake.multirecyclerview.BaseMultiViewData
 import com.appimake.multirecyclerview.BaseMultiViewHolder
 
 class ViewGalleryData(val dataModel: ViewGalleryDataModel) : BaseMultiViewData {
+    override fun isValid(): Boolean = true
+
     override fun getName(): String = "Gallery"
 
     override fun getType(): Int = this.hashCode()

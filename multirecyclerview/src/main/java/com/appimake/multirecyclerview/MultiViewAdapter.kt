@@ -6,6 +6,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 
 class MultiViewAdapter(val context: Context, val listItem: ArrayList<BaseMultiViewData>) : RecyclerView.Adapter<BaseMultiViewHolder>() {
+
+    init {
+        val tmpList = ArrayList<BaseMultiViewData>()
+        listItem.forEach {
+            if(it.isValid())
+                tmpList.add(it)
+        }
+        listItem.clear()
+        listItem.addAll(tmpList)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseMultiViewHolder {
         var viewData = findLayout(viewType)
         var view = LayoutInflater

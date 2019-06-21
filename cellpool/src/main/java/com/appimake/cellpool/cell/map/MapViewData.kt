@@ -6,6 +6,8 @@ import com.appimake.multirecyclerview.BaseMultiViewData
 import com.appimake.multirecyclerview.BaseMultiViewHolder
 
 class MapViewData(var mapDataModel: MapViewModel) : BaseMultiViewData {
+    override fun isValid(): Boolean = true
+
     override fun getDataModel(): Any = mapDataModel
 
     override fun getName(): String = "Map View"

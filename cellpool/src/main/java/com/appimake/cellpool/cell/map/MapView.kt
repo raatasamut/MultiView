@@ -21,12 +21,10 @@ class MapView(itemView: View) : BaseMultiViewHolder(itemView), OnMapReadyCallbac
 
         data = item.getDataModel() as MapViewModel
         mapView = itemView.findViewById(R.id.cell_map_map)
-        if (mapView != null) {
-            // Initialise the MapView
-            mapView.onCreate(null)
-            // Set the map ready callback to receive the GoogleMap object
-            mapView.getMapAsync(this)
-        }
+
+        mapView.onCreate(null)
+        mapView.getMapAsync(this)
+
     }
 
     override fun onMapReady(googleMap: GoogleMap?) {

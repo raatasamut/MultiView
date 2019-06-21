@@ -23,5 +23,7 @@ class ImageCard(itemView: View) : BaseMultiViewHolder(itemView) {
                 .into(ivImage)
 
         tvTitle.text = (item.getDataModel() as ImageCardModel).title
+
+
     }
 }

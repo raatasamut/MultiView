@@ -6,6 +6,9 @@ import com.appimake.multirecyclerview.BaseMultiViewData
 import com.appimake.multirecyclerview.BaseMultiViewHolder
 
 class ViewTitleData(var title: String) : BaseMultiViewData {
+
+    override fun isValid(): Boolean = true
+
     override fun getDataModel(): Any = 0
 
     override fun getLayout(): Int = R.layout.cell_title

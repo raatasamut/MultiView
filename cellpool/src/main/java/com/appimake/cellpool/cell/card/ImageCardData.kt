@@ -6,6 +6,8 @@ import com.appimake.multirecyclerview.BaseMultiViewData
 import com.appimake.multirecyclerview.BaseMultiViewHolder
 
 class ImageCardData(var imageDataModel: ImageCardModel) : BaseMultiViewData {
+    override fun isValid(): Boolean = true
+
     override fun getDataModel(): Any = imageDataModel
 
     override fun getName(): String = "Image Card"
