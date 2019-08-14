@@ -4,40 +4,43 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.appimake.multirecyclerview.*
+import com.appimake.multiview.conponent.cell_001.Cell001DataModel
+import com.appimake.multiview.conponent.cell_001.DataCell_001
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var recyclerView: androidx.recyclerview.widget.RecyclerView
-    private lateinit var viewAdapter: androidx.recyclerview.widget.RecyclerView.Adapter<*>
-    private lateinit var viewManager: androidx.recyclerview.widget.RecyclerView.LayoutManager
-
+    val testValue: MutableLiveData<Int> by lazy {
+        MutableLiveData<Int>()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        val cellList = arrayListOf<BaseMultiViewData>()
-//        cellList.add(ViewTitleData("Gallery"))
-//        cellList.add(ViewGalleryData(ViewGalleryDataModel(arrayListOf(
-//                "https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-//                "https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-//                "https://images.pexels.com/photos/490411/pexels-photo-490411.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-//                "https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"))))
-//
-//        cellList.add(ViewTitleData("Picture"))
-//        cellList.add(ImageCardData(ImageCardModel("https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260", "Image")))
-//
-//        viewManager = androidx.recyclerview.widget.LinearLayoutManager(this)
-//        viewAdapter = MultiViewAdapter(this, cellList)
-//        recyclerView = findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.main_recycler_view).apply {
-//            layoutManager = viewManager
-//            adapter = viewAdapter
+        testValue.postValue(1)
+
+        val cellList = arrayListOf<BaseMultiViewData>()
+
+        cellList.add(DataCell_001(Cell001DataModel("AA", testValue)))
+        cellList.add(DataCell_001(Cell001DataModel("BB", testValue)))
+        cellList.add(DataCell_001(Cell001DataModel("CC", testValue)))
+        cellList.add(DataCell_001(Cell001DataModel("DD", testValue)))
+        cellList.add(DataCell_001(Cell001DataModel("EE", testValue)))
+
+        main_recycler_view.setup(cellList)
+
+//        main_recycler_view.apply {
+//            layoutManager = LinearLayoutManager(this@MainActivity)
+//            adapter = MultiViewAdapter(this@MainActivity, cellList)
 //            setHasFixedSize(true)
 //        }
-//
+
 //        // Set swipe left right
 //
 //        val multiSwipeController = MultiSwipeController(recyclerView, object : MultiSwipeControllerActions() {

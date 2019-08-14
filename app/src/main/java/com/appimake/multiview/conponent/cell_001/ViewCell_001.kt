@@ -12,6 +12,8 @@ class ViewCell_001(itemView: View) : BaseMultiViewHolder(itemView) {
 
         (item.getDataModel() as Cell001DataModel).let { data: Cell001DataModel ->
 
+            itemView.cell_001_title.text = data.title
+
             itemView.cell_001_value.text = data.value.value.toString()
 
             data.value.observe(itemView.context as LifecycleOwner, Observer {
