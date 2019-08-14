@@ -26,6 +26,8 @@ class CustomRecyclerView: FrameLayout {
 
     fun getRAWLoadingView() = custom_recycler_view_loading
 
+    fun getRAWNotFoundView() = custom_recycler_view_not_found
+
     fun setup(cellList: ArrayList<BaseMultiViewData>, lm: RecyclerView.LayoutManager? = LinearLayoutManager(context)): CustomRecyclerView{
         custom_recycler_view_rv.apply {
             layoutManager = lm
@@ -33,6 +35,12 @@ class CustomRecyclerView: FrameLayout {
             setHasFixedSize(true)
         }
         hideLoading()
+
+        if(cellList.isEmpty())
+            showNotFound()
+        else
+            hideNotFound()
+
         return this
     }
 
@@ -49,5 +57,13 @@ class CustomRecyclerView: FrameLayout {
     fun hideLoading(){
         custom_recycler_view_loading.visibility = View.GONE
         custom_recycler_view_rv.visibility = View.VISIBLE
+    }
+
+    fun showNotFound(){
+        custom_recycler_view_not_found.visibility = View.VISIBLE
+    }
+
+    fun hideNotFound(){
+        custom_recycler_view_not_found.visibility = View.GONE
     }
 }
