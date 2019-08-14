@@ -1,4 +1,4 @@
-package com.appimake.multiview.recycler
+package com.appimake.multirecyclerview.recycler
 
 import android.content.Context
 import android.util.AttributeSet
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.appimake.multirecyclerview.BaseMultiViewData
 import com.appimake.multirecyclerview.MultiViewAdapter
-import com.appimake.multiview.R
+import com.appimake.multirecyclerview.R
 import kotlinx.android.synthetic.main.custom_recycler_view.view.*
 
 class CustomRecyclerView: FrameLayout {

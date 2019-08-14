@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.appimake.multiview.recycler.CustomRecyclerView
+<com.appimake.multirecyclerview.recycler.CustomRecyclerView
     android:id="@+id/main_recycler_view"
     android:scrollbars="vertical"
     android:layout_width="match_parent"
