@@ -26,13 +26,19 @@ class CustomRecyclerView: FrameLayout {
 
     fun getRAWLoadingView() = custom_recycler_view_loading
 
-    fun setup(cellList: ArrayList<BaseMultiViewData>, lm: RecyclerView.LayoutManager? = LinearLayoutManager(context)){
+    fun setup(cellList: ArrayList<BaseMultiViewData>, lm: RecyclerView.LayoutManager? = LinearLayoutManager(context)): CustomRecyclerView{
         custom_recycler_view_rv.apply {
             layoutManager = lm
             adapter = MultiViewAdapter(context, cellList)
             setHasFixedSize(true)
         }
         hideLoading()
+        return this
+    }
+
+    fun useDivider(divider: Int = R.drawable.cell_divider): CustomRecyclerView {
+        getRAWRecyclerView().addItemDecoration(DividerItemDecorator(resources.getDrawable(divider, null)))
+        return this
     }
 
     fun showLoading(){

@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         cellList.add(DataCell_001(Cell001DataModel("DD", testValue)))
         cellList.add(DataCell_001(Cell001DataModel("EE", testValue)))
 
-        main_recycler_view.setup(cellList)
+        main_recycler_view.setup(cellList).useDivider()
 
 //        main_recycler_view.apply {
 //            layoutManager = LinearLayoutManager(this@MainActivity)
